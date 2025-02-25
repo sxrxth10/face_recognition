@@ -41,7 +41,7 @@ if option == "Image":
 
     # Display processed image
     if st.session_state.processed_file:
-        image_bytes = BytesIO(st.session_state.processed_file)
+        image_bytes = BytesIO(st.session_state.processed_file) #open
         processed_image = Image.open(image_bytes)
         st.image(processed_image, caption="Processed Image", use_container_width=True)
 
