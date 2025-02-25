@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, Response
-from backend.recognition import recognize_faces_in_image, recognize_faces_in_video
+from recognition import recognize_faces_in_image, recognize_faces_in_video
 from io import BytesIO
 from PIL import Image
 
