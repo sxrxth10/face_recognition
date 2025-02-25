@@ -4,7 +4,7 @@ import tempfile
 from PIL import Image
 from io import BytesIO
 
-BACKEND_URL = "http://3.110.135.254:8000"
+BACKEND_URL = "http://35.154.237.199:8000"
 
 st.title("Face Recognition System")
 
