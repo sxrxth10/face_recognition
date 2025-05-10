@@ -11,10 +11,10 @@ import tempfile
 # Initialize MTCNN and FaceNet model
 mtcnn = MTCNN(keep_all=True, post_process=False, device='cuda' if torch.cuda.is_available() else 'cpu')
 model = InceptionResnetV1(pretrained='vggface2').eval().to('cuda' if torch.cuda.is_available() else 'cpu')
-face_recognition_model = load_model("models/face_recognition_model.h5")
+face_recognition_model = load_model("models/face_recognition_model_updated.h5")
 
 # Load the saved LabelEncoder
-label_encoder = joblib.load("models/label_encoder.pkl")
+label_encoder = joblib.load("models/player_labels.pkl")
 
 def recognize_faces_in_image(img):
     draw = ImageDraw.Draw(img)
@@ -103,9 +103,11 @@ def recognize_faces_in_video(video_bytes):
                 predicted_player = label_encoder.inverse_transform([player_id])[0] 
                 confidence = np.max(prediction) 
 
-                font_path = "arial.ttf"  # Make sure the font file exists
-                font_size = 25  # Increase this for larger text
-                font = ImageFont.truetype(font_path, font_size)
+                # font_path = "arial.ttf"  # Make sure the font file exists
+                # font_size = 25  # Increase this for larger text
+                # font = ImageFont.truetype(font_path, font_size)
+                font= ImageFont.load_default(25)
+
 
                 # Draw bounding box and name
                 draw.rectangle([x1, y1, x2, y2], outline="red", width=3)
